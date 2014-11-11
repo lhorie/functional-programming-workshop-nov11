@@ -1,0 +1,38 @@
+<h1>Generalize exercise 1 by turning it into a function that can sort by any of the properties in a user, e.g.</h1>
+
+<script>
+var users = [
+	{firstName: "John", lastName: "Doe", title: "Project manager"},
+	{firstName: "Mary", lastName: "Smith", title: "Application developer"},
+	{firstName: "Bob", lastName: "Brown", title: "Graphic Designer"},
+	{firstName: "John", lastName: "Brown", title: "Application developer"},
+	{firstName: "Jane", lastName: "Wells", title: "Project manager"},
+	{firstName: "Gary", lastName: "Smith", title: "Graphic Designer"},
+]
+
+
+
+//SOLUTION
+
+function sort(list, key) {
+	return list.sort(function(a, b) {
+		if (a[key] < b[key]) return -1
+		else if (a[key] > b[key]) return 1
+		else return 0
+	})
+}
+
+//Conclusion:
+//
+//Closures allow us to dynamically change parameters in a computation
+//
+//
+
+sort(users, "firstName")
+sort(users, "lastName")
+sort(users, "title")
+</script>
+
+<style type="text/css">
+script {background:#eee;display:block;font-family:monospace;white-space:pre;}
+</style>

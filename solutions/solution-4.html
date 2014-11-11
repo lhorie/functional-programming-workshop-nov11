@@ -1,0 +1,42 @@
+<h1>Get the list of users' first and last names (i.e. `["John Doe", "Mary Smith", ...]`)</h1>
+
+<script>
+var users = [
+	{firstName: "John", lastName: "Doe", title: "Project manager"},
+	{firstName: "Mary", lastName: "Smith", title: "Application developer"},
+	{firstName: "Bob", lastName: "Brown", title: "Graphic Designer"},
+	{firstName: "John", lastName: "Brown", title: "Application developer"},
+	{firstName: "Jane", lastName: "Wells", title: "Project manager"},
+	{firstName: "Gary", lastName: "Smith", title: "Graphic Designer"},
+]
+
+function sort(list, access) {
+	return list.sort(function(a, b) {
+		var aValue = access(a), bValue = access(b)
+		if (aValue < bValue) return -1
+		else if (aValue > bValue) return 1
+		else return 0
+	})
+}
+
+
+
+//SOLUTION
+
+sort(users, getFullName)
+
+function getFullName(user) {
+	return user.firstName + " " + user.lastName
+}
+
+users.map(getFullName)
+
+//Conclusion:
+//
+//We can reuse our specialization functions for different purposes
+//
+//</script>
+
+<style type="text/css">
+script {background:#eee;display:block;font-family:monospace;white-space:pre;}
+</style>

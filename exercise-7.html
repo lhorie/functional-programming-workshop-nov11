@@ -1,0 +1,41 @@
+<h1>Some Mithril.js fun - Make a sortable table</h1>
+<div id="container"></div>
+<script src="http://cdn.jsdelivr.net/mithril/0.1.22/mithril.js"></script>
+<script type="text/javascript">
+var exercise = {}
+
+exercise.controller = function() {
+    return {
+		users: [
+			{firstName: "John", lastName: "Doe", title: "Project manager"},
+			{firstName: "Mary", lastName: "Smith", title: "Application developer"},
+			{firstName: "Bob", lastName: "Brown", title: "Graphic Designer"},
+			{firstName: "John", lastName: "Brown", title: "Application developer"},
+			{firstName: "Jane", lastName: "Wells", title: "Project manager"},
+			{firstName: "Gary", lastName: "Smith", title: "Graphic Designer"},
+		]
+	}
+}
+
+exercise.view = function(ctrl) {
+    return m("table", [
+		m("tr", [
+			m("th[data-sort-by=firstName]", "First name"),
+			m("th[data-sort-by=lastName]", "Last name"),
+			m("th[data-sort-by=title]", "Title")
+		]),
+        m("tr", [
+			m("td", "first name goes here"),
+			m("td", "last name goes here"),
+			m("td", "title goes here")
+		])
+    ])
+}
+
+m.module(document.getElementById("container"), exercise)
+</script>
+<style type="text/css">
+script {background:#eee;display:block;font-family:monospace;margin:20px 0;white-space:pre;}
+th {background:#eee;}
+th,td {border:1px solid #888;padding:5px;}
+</style>

@@ -1,0 +1,52 @@
+<h1>Refactor exercise 5 so that we can sort users by a property that does not exist yet</h1>
+
+<script>
+var users = [
+	{firstName: "John", lastName: "Doe", title: "Project manager"},
+	{firstName: "Mary", lastName: "Smith", title: "Application developer"},
+	{firstName: "Bob", lastName: "Brown", title: "Graphic Designer"},
+	{firstName: "John", lastName: "Brown", title: "Application developer"},
+	{firstName: "Jane", lastName: "Wells", title: "Project manager"},
+	{firstName: "Gary", lastName: "Smith", title: "Graphic Designer"},
+]
+
+function sort(list, access) {
+	return list.sort(function(a, b) {
+		var aValue = access(a), bValue = access(b)
+		if (aValue < bValue) return -1
+		else if (aValue > bValue) return 1
+		else return 0
+	})
+}
+
+function getFullName(user) {
+	return user.firstName + " " + user.lastName
+}
+
+
+
+//SOLUTION
+
+function pluck(prop) {
+	return function(user) {
+		return user[prop]
+	}
+}
+
+var result = sort(users, pluck("lastName"))
+	.slice(0, 3)
+	.map(pluck("title"))
+
+
+//Conclusion:
+//
+//1) We can create generic functions that return specialized functions
+//
+//2) Since "lastName" and "title" are just strings, we can change these parameters dynamically by simply changing data,
+//   instead of writing new functions every time a new property is added
+
+</script>
+
+<style type="text/css">
+script {background:#eee;display:block;font-family:monospace;white-space:pre;}
+</style>
